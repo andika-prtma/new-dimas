@@ -122,9 +122,10 @@ class External extends CI_Controller {
 
 	public function viewDocument(){
 		$key = $this->input->get('key');
-		$data['document'] = $this->m_external->getDocument($key)->row();
+		$data['title'] 		= 'DIMAS';
+		$data['document'] 	= $this->m_external->getDocument($key)->row();
 
-		$this->load->view('header/external');
+		$this->load->view('header/external', $data);
 		$this->load->view('external/view-document', $data);
 		$this->load->view('footer/external');
 	}
