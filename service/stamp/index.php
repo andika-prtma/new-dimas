@@ -9,7 +9,8 @@ require(dirname(__DIR__ ) . '/stamp/vendor/FPDI/fpdi.php');
 // $fileId     = $_GET['id'];
 // $name       = $_GET['name'];
 
-$fullPathToFile = dirname(__DIR__ ) . "/stamp/attachment/12/PU-DDC-001_PROSEDUR_PENGENDALIAN_DOKUMEN.pdf";
+$fullPathToFile = dirname(__DIR__ ) . "/stamp/attachment/1/tester.pdf";
+// $fullPathToFile = dirname(__DIR__ ) . "/stamp/attachment/".$fileId."/".$fileName;
 $user           = 'andika';
 $date           = date('d-m-Y');
 
@@ -72,7 +73,7 @@ class PDF extends PDF_Rotate {
 
 
 $pdf    = new PDF;
-for($i = 1; $i <= 12; $i++){
+for($i = 1; $i <= $pdf->setSourceFile($fullPathToFile); $i++){
     $pdf->AddPage(); 
     $tplIdx = $pdf->importPage($i);
     $pdf->useTemplate($tplIdx, 0, 0);    

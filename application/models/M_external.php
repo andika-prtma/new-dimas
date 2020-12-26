@@ -26,7 +26,7 @@ class M_external extends CI_Model{
 	}
 
 	public function getDocument($key){
-		$this->db->select('rev.*, user.first_name as creator, user2.first_name as sender, doc.number_document ')
+		$this->db->select('rev.*, user.first_name as creator, user2.first_name as sender, doc.number_document, doc.id_dept, doc.ID as id_doc ')
 				->from('tbl_share_external as ext')
 				->join('tbl_document_revisi as rev', 'ext.id_rev = rev.ID', 'left')
 				->join('tbl_document as doc', 'rev.id_doc = doc.ID', 'left')
