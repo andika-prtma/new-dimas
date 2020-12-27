@@ -58,10 +58,10 @@ class External extends CI_Controller {
 		$now 	= GregorianToJD(date('m'), date('d'), date('Y'));
 
 		if ($start <= $now) {
-			if ($now <= $now) {
-				return 1;
-			} else {
+			if ($finish <= $now) {
 				return 2;
+			} else {
+				return 1;
 			}
 		} else {
 			return 0;

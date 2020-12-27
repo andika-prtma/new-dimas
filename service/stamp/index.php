@@ -84,4 +84,4 @@ for($i = 1; $i <= $pdf->setSourceFile($fullPathToFile); $i++){
     $pdf->SetFont('Arial', 'B', 20);
     $pdf->RotatedText(60, 230, 'Print by:'.$user.', time:'.$date, 45);
 }
-$pdf->Output('asdas', 'F');
+$pdf->Output();

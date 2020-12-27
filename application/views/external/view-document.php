@@ -93,16 +93,6 @@
                 <div class="row">
                   <div class="col-md-12">
                     <?= form_open_multipart('document/revisi_proses', 'class="form-horizontal" id="form-edit"') ?>
-                    <div class="form-group row">
-                      <label for="rev" class="col-sm-1 col-form-label">Email</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control" id="rev" name="rev" value="">
-                      </div> 
-                      <label for="rev" class="col-sm-2 col-form-label">Name / Company</label>
-                      <div class="col-sm-5">
-                        <input type="text" class="form-control" id="rev" name="rev" value="">
-                      </div> 
-                    </div>
                     <label for="rev" class="col-form-label">Comment</label>
                     <div class="form-group row">
                       <div class="col-sm-12">
