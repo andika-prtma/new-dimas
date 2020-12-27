@@ -116,18 +116,37 @@ class External extends CI_Controller {
 
 		$id_log = $this->m_external->insertLog($log);
 		$this->session->set_userdata('key', $key);
-		$this->session->set_userdata($log);
+		$this->session->set_userdata('id_visit', $id_log);
 		redirect('external/viewDocument?key='.$key);
 	}
 
 	public function viewDocument(){
-		$key = $this->input->get('key');
+		$data['key'] 		= $this->input->get('key');
 		$data['title'] 		= 'DIMAS';
-		$data['document'] 	= $this->m_external->getDocument($key)->row();
+		$data['document'] 	= $this->m_external->getDocument($data['key'])->row();
 
 		$this->load->view('header/external', $data);
 		$this->load->view('external/view-document', $data);
 		$this->load->view('footer/external');
+	}
+
+	public function prosesComment(){
+		$key 	 = $this->input->get("key");
+		$visitor = $this->session->userdata('id_visit');
+		$comment = $this->input->post('comment');
+
+		$this->m_external->insertComment($comment, $visitor);
+		$this->session->set_userdata('update', 1);
+		redirect('external/viewDocument?key='.$key);
+	}
+
+	public function leave(){
+		$key = $this->input->get("key");
+		$this->session->unset_userdata(
+			['key', 'password', 'name', 'site', 'email', 'id_share_external', 'created_at', 'id_visit', 'update']
+		);
+
+		redirect('external?key='.$key);
 	}
 
 

@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?= base_url('assets/template/adminlte/') ?>index2.html"><b>DIMAS - Share Page</b></a>
+    <b>DIMAS - Share Page</b>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -31,7 +31,7 @@
       <?= form_open('external/initProses?key='.$key) ?>
         <input type="text" name="key" value="<?= $key ?>" hidden>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Input your email" name="email">
+          <input type="email" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="name" class="form-control" placeholder="Input your name" name="name">
+          <input type="name" class="form-control" placeholder="Name / Company" name="name">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>

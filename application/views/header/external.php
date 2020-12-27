@@ -15,6 +15,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?= base_url('assets/template/adminlte') ?>/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets/template/adminlte') ?>/dist/css/adminlte.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?= base_url('assets/template/adminlte') ?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="<?= base_url('assets/template/adminlte') ?>/plugins/toastr/toastr.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -35,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <li class="nav-item">
-            <a href="<?= base_url('external/logout') ?>" class="btn btn-primary">Leave</a>
+            <a href="<?= base_url('external/leave?key='.$key) ?>" class="btn btn-primary">Leave</a>
         </li>
       </ul>
     </div>

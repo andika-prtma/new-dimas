@@ -92,11 +92,11 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12">
-                    <?= form_open_multipart('document/revisi_proses', 'class="form-horizontal" id="form-edit"') ?>
+                    <?= form_open_multipart('external/prosesComment?key='.$key, 'class="form-horizontal" id="form-edit"') ?>
                     <label for="rev" class="col-form-label">Comment</label>
                     <div class="form-group row">
                       <div class="col-sm-12">
-                        <textarea class="form-control" style="height: 100px"></textarea>
+                        <textarea class="form-control" style="height: 100px" name="comment"></textarea>
                       </div> 
                     </div>
                     <div class="form-group row">

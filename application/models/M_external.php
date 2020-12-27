@@ -36,6 +36,16 @@ class M_external extends CI_Model{
 		return $this->db->get();
 	}
 
+	public function insertComment($comment, $visitor){
+		$data = [
+			'id_ext_log' 	=> $visitor,
+			'comment' 		=> $comment,
+			'created_at' 	=> time()
+		];
+
+		$this->db->insert('tbl_share_external_comment', $data);
+	}
+
 	
 
 

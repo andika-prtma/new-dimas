@@ -210,7 +210,7 @@ class Document extends CI_Controller {
 		$id_doc 	= $this->input->post('id_doc');
 		$title 		= $this->input->post('title');
 		$comment 	= $this->input->post('comment');
-		$rev 	= $this->input->post('rev');
+		$rev 		= $this->input->post('rev');
 
 		$file_doc 	= $this->upload($id_doc, 'file_doc');
 		$file_pdf 	= $this->upload($id_doc, 'file_pdf');
