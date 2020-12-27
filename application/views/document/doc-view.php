@@ -49,7 +49,7 @@
                         <td><?= date('d-m-Y', $document->reminder) ?></td>
                       </tr>
                     </tbody>
-                  </table>
+                </table>
               </div>
             </div>
           </div>

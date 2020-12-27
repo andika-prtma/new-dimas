@@ -5,14 +5,15 @@
 require(dirname(__DIR__ ) . '/stamp/vendor/fpdf/fpdf.php');
 require(dirname(__DIR__ ) . '/stamp/vendor/FPDI/fpdi.php');
 
-// $fileName   = $_GET['pdf'];
-// $fileId     = $_GET['id'];
-// $name       = $_GET['name'];
+$fileName   = $_GET['pdf'];
+$fileId     = $_GET['id'];
+//$name       = $_GET['name'];
 
-$fullPathToFile = dirname(__DIR__ ) . "/stamp/attachment/1/tester.pdf";
-// $fullPathToFile = dirname(__DIR__ ) . "/stamp/attachment/".$fileId."/".$fileName;
+//$fullPathToFile = dirname(__DIR__ ) . "/stamp/attachment/1/tester.pdf";
+$fullPathToFile = dirname(__DIR__ ) . "/stamp/attachment/".$fileId."/".$fileName;
 $user           = 'andika';
 $date           = date('d-m-Y');
+
 
 class PDF_Rotate extends FPDI {
 
@@ -83,4 +84,4 @@ for($i = 1; $i <= $pdf->setSourceFile($fullPathToFile); $i++){
     $pdf->SetFont('Arial', 'B', 20);
     $pdf->RotatedText(60, 230, 'Print by:'.$user.', time:'.$date, 45);
 }
-$pdf->Output();
+$pdf->Output('asdas', 'F');

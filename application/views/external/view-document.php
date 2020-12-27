@@ -123,18 +123,17 @@
     </div>  
   </div>
 
-<div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="preview"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document" style="max-width: 80%;">
+<div class="modal fade bd-example-modal-xl" id="preview" tabindex="-1" role="dialog" aria-labelledby="preview" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 80%;">
     <div class="modal-content" >
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Preview</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Preview <?= $document->file_pdf.' '.$document->id_doc ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <iframe src="<?= base_url().'service/stamp/index.php'?>" style="width: 100%; height:500px;"></iframe>
+        <iframe src="<?= base_url()?>service/stamp/index.php?pdf=<?= $document->file_pdf ?>&id=<?= $document->id_doc ?>" style="width: 100%; height:500px;"></iframe>
       </div>
       <div class="modal-footer">
       </div>
