@@ -54,49 +54,34 @@
                 <h3 class="card-title">Document: <?= $document->number_document ?></h3>
               </div>
               <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-
-                    <table class="table">
-                      <tr>
-                        <td width="10%">Title</td>
-                        <td width="5%">:</td>
-                        <td><?= strtoupper($document->title) ?></td>
-                      </tr>
-                      <tr>
-                        <td width="5%">Rev.</td>
-                        <td width="5%">:</td>
-                        <td><?= $document->revisi ?></td>
-                      </tr>
-                      <tr>
-                        <td width="5%">Creator</td>
-                        <td width="5%">:</td>
-                        <td><?= $document->first_name ?></td>
-                      </tr>
-                      <tr>
-                        <td width="5%">File PDF</td>
-                        <td width="5%">:</td>
-                        <td><?= $document->file_pdf ?></td>
-                      </tr>
-                    </table>
-                    <hr>
-                    <h6>Share to</h6>
-                      <div class="form-horizontal col-md-12">
-                        <div class="form-group row">
-                          <div class="col-sm-9">
-                            <select class="form-control" id="type_share">
-                              <option value="1">Internal User</option>
-                              <option value="2">Internal Department</option>
-                              <option value="3">External External</option>
-                            </select>
-                          </div>
-                          <div class="col-sm-3">
-                            <button class="btn btn-primary" onclick="showDiv()">Proses</button>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                </div>
+                <div class="card-body">
+					<table id="example1" class="table table-bordered table-striped">
+					  <thead>
+					  <tr>
+						<th>Nomor Document</th>
+						<th>Title</th>
+						<th>Revisi</th>
+						<th>Status</th>
+						<th>Action</th>
+					  </tr>
+					  </thead>
+					  <tbody>
+						<?php foreach ($request as $req): ?>
+						  <tr>
+							<td><?= $req->number_document ?></td>
+							<td><?= $req->number_document ?></td>
+							<td><?= $req->number_document ?></td>
+							<td><?= $req->number_document ?></td>
+							<td>Contoh</td>
+							<td>
+							  <button class="badge bg-green">detail</button>
+							  <a href="<?= base_url('monitoring/acceptRequestDirect/').$req->id_ext ?>" class="badge bg-blue">accept</a>
+							</td>
+						  </tr>
+						<?php endforeach ?>
+					  </tbody>
+					</table>
+				  </div>
               </div>
             </div>
           </div>
