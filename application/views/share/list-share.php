@@ -55,38 +55,38 @@
               </div>
               <div class="card-body">
                 <div class="card-body">
-			<table id="example1" class="table table-bordered table-striped">
-			  <thead>
-			  <tr>
-				<th>Nomor Document</th>
-				<th>Title</th>
-				<th>Revisi</th>
-				<th>Status</th>
-				<th>Action</th>
-			  </tr>
-			  </thead>
-			  <tbody>
-				<?php foreach ($list->result() as $req): ?>
-				  <?php
-				  	if($req->confirm_mr == 1){
-						$status = 'Verified';
-					} else {
-						$status = 'Waiting';
-					}
-				  ?>
-				  <tr>
-					<td><?= $req->number_document ?></td>
-					<td><?= $req->title ?></td>
-					<td><?= $req->revisi ?></td>
-					<td><?= $status ?></td>
-					<td>
-					  <a href="<?= base_url('monitoring/acceptRequestDirect/').$req->id_ext ?>" class="badge bg-blue">Check</a>
-					</td>
-				  </tr>
-				<?php endforeach ?>
-			  </tbody>
-			</table>
-		  </div>
+            			<table id="example1" class="table table-bordered table-striped">
+            			  <thead>
+            			  <tr>
+              				<th>Nomor Document</th>
+              				<th>Title</th>
+              				<th>Revisi</th>
+              				<th>Status</th>
+              				<th>Action</th>
+            			  </tr>
+            			  </thead>
+            			  <tbody>
+            				  <?php foreach ($list->result() as $req): ?>
+              				  <?php
+              				  	if($req->confirm_mr == 1){
+              						$status = 'Verified';
+              					} else {
+              						$status = 'Waiting';
+              					}
+            				  ?>
+            				  <tr>
+              					<td><?= $req->number_document ?></td>
+              					<td><?= $req->title ?></td>
+              					<td><?= $req->revisi ?></td>
+              					<td><?= $status ?></td>
+              					<td>
+              					  <a href="<?= base_url('monitoring/acceptRequestDirect/').$req->id_ext ?>" class="badge bg-blue">Check</a>
+              					</td>
+            				  </tr>
+            				<?php endforeach ?>
+            			  </tbody>
+            			</table>
+          		  </div>
               </div>
             </div>
           </div>
@@ -96,26 +96,3 @@
   </div>
 
 
-<script type="text/javascript">
-  function showDiv() {
-    let privacy = document.getElementById('type_share').value;
-    switch(privacy){
-      case '1':
-        document.getElementById('shareUser').hidden = false;
-        document.getElementById('shareDept').hidden = true;
-        document.getElementById('shareExternal').hidden = true;
-      break;
-      case '2':
-        document.getElementById('shareUser').hidden = true;
-        document.getElementById('shareDept').hidden = false;
-        document.getElementById('shareExternal').hidden = true;
-      break;
-      case '3':
-        document.getElementById('shareUser').hidden = true;
-        document.getElementById('shareDept').hidden = true;
-        document.getElementById('shareExternal').hidden = false;
-      break;
-    }
-  }
-
-</script>
