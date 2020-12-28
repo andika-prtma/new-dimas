@@ -90,4 +90,15 @@ class Share extends CI_Controller {
 		$this->m_share->insertShareExternal($data);
 		redirect($_SERVER['HTTP_REFERER']);
 	}
+	
+	public function externalShare(){
+		$data['title'] = 'List share';
+		$data['list'] = $this->m_share->getExternalList($this->id_user);
+		
+		$this->load->view('header/share-page', $data);
+		$this->load->view('home/sidebar');
+		$this->load->view('share/list-share');
+		$this->load->view('home/main-footer');
+		$this->load->view('footer/share-page', $data);	
+	}
 }
