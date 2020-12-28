@@ -24,7 +24,7 @@ class M_share extends CI_Model{
 	}
 	
 	public function getExternalList($user){
-		$this->db->select('rev.*, doc.number_document')
+		$this->db->select('rev.*, doc.number_document, ext.confirm_mr, ext.ID as id_ext')
 			->from('tbl_share_external as ext')
 			->join('tbl_document_revisi as rev', 'rev.ID = ext.id_rev', 'join')
 			->join('tbl_document as doc', 'rev.id_doc = doc.ID', 'left')
