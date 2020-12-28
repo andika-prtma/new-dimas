@@ -3,7 +3,7 @@
 class M_monitoring extends CI_Model{
 
 	public function getRequest(){
-		$this->db->select('rev.*, doc.number_document, ext.id_user as sender')
+		$this->db->select('rev.*, doc.number_document, ext.id_user as sender, ext.ID as id_ext')
 				->from('tbl_share_external as ext')
 				->join('tbl_document_revisi as rev', 'rev.ID = ext.id_rev', 'left')
 				->join('tbl_user_login as usr', 'usr.ID = ext.id_user', 'left')

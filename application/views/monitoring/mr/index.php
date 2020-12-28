@@ -84,7 +84,7 @@
                         <td>Contoh</td>
                         <td>
                           <button class="badge bg-green">detail</button>
-                          <button class="badge bg-blue">accept</button>
+                          <a href="<?= base_url('monitoring/acceptRequestDirect/').$req->id_ext ?>" class="badge bg-blue">accept</a>
                         </td>
                       </tr>
                     <?php endforeach ?>
