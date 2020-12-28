@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark"> Home</h1>
+            <h1 class="m-0 text-dark"> Monitoring MR</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -19,11 +19,11 @@
     <!-- Main content -->
     <div class="content">
       <div class="container">
-        <div class="row">          
+        <div class="row"> 
           <div class="col-lg-4 col-12">
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3><?= $all ?></h3>
+                <h3>1</h3>
 
                 <p>All Document</p>
               </div>
@@ -35,7 +35,7 @@
           <div class="col-lg-4 col-12">
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3><?= $users ?></h3>
+                <h3>1</h3>
                 <p>User Registrations</p>
               </div>
               <div class="icon">
@@ -46,7 +46,7 @@
           <div class="col-lg-4 col-12">
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3><?= $shared ?></h3>
+                <h3>1</h3>
 
                 <p>Document Shared</p>
               </div>
@@ -60,7 +60,7 @@
           <div class="col-lg-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Waiting Your Approval</h3>
+                <h3 class="card-title">Request to share</h3>
               </div>
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -69,18 +69,23 @@
                     <th>Nomor Document</th>
                     <th>Title</th>
                     <th>Revisi</th>
-                    <th>Creator</th>
+                    <th>Requester</th>
+                    <th>Keperluan</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($document->result() as $doc): ?>
+                    <?php foreach ($request as $req): ?>
                       <tr>
-                        <td><?= $doc->number_document ?></td>
-                        <td><?= $doc->title ?></td>
-                        <td><?= $doc->revisi ?></td>
-                        <td><?= $doc->first_name ?></td>
-                        <td><a href="<?= base_url('approve/detail/').$doc->id_doc.'/'.$doc->id_revisi ?>" class="btn btn-success">Detail</a></td>
+                        <td><?= $req->number_document ?></td>
+                        <td><?= $req->number_document ?></td>
+                        <td><?= $req->number_document ?></td>
+                        <td><?= $req->number_document ?></td>
+                        <td>Contoh</td>
+                        <td>
+                          <button class="badge bg-green">detail</button>
+                          <button class="badge bg-blue">accept</button>
+                        </td>
                       </tr>
                     <?php endforeach ?>
                   </tbody>
