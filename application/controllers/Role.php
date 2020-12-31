@@ -7,41 +7,15 @@ class Role extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function index2(){
-		$data['title'] 	= 'Rosalina | Role Management';
-		$data['role']	= $this->db->get("tbl_user_role");
-
-		$this->load->view('home/header', $data);
-		$this->load->view('home/sidebar');
-		$this->load->view('home/topbar');
-		$this->load->view('role/index', $data);
-		$this->load->view('home/footer-content');
-		$this->load->view('superadmin/structure/footer');
-	}
-
 	public function index(){
 		$data['title'] 	= 'Rosalina | Role Management';
 		$data['role']	= $this->db->get("tbl_user_role");
 
 		$this->load->view('header/home-index', $data);
-		$this->load->view('home/lte/sidebar');
-		$this->load->view('home/lte/topbar');
-		$this->load->view('role/lte/index', $data);
-		$this->load->view('home/lte/footer-content');
-		$this->load->view('footer/home-index');
-	}
-
-	public function detail2($id){
-		$data['title'] 	= 'Rosalina | Role Detail';
-		$data['menu']	= $this->db->get('tbl_user_menu');
-		$data['role']	= $this->db->get_where('tbl_user_role', ['ID' => $id])->row();
-		$data['access'] = $this->db->get_where("tbl_user_access_menu", ['id_role' => $id])->row();;
-		$this->load->view('home/header', $data);
 		$this->load->view('home/sidebar');
-		$this->load->view('home/topbar');
-		$this->load->view('role/detail', $data);
-		$this->load->view('home/footer-content');
-		$this->load->view('superadmin/structure/footer');
+		$this->load->view('role/lte/index', $data);
+		$this->load->view('home/main-footer');
+		$this->load->view('footer/home-index');
 	}
 
 	public function detail($id){
@@ -50,10 +24,9 @@ class Role extends CI_Controller {
 		$data['role']	= $this->db->get_where('tbl_user_role', ['ID' => $id])->row();
 		$data['access'] = $this->db->get_where("tbl_user_access_menu", ['id_role' => $id])->row();;
 		$this->load->view('header/home-index', $data);
-		$this->load->view('home/lte/sidebar');
-		$this->load->view('home/lte/topbar');
+		$this->load->view('home/sidebar');
 		$this->load->view('role/lte/detail', $data);
-		$this->load->view('home/lte/footer-content');
+		$this->load->view('home/main-footer');
 		$this->load->view('footer/home-index');
 	}
 

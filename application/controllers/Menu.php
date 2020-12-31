@@ -7,19 +7,6 @@ class Menu extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function index2(){
-		$data['title'] 	= 'Rosalina | Role Management';
-		$data['menu']	= $this->db->get("tbl_user_menu");
-		$data['sub']	= $this->m_superadmin->getAllSubMenu();
-
-		$this->load->view('superadmin/structure/header', $data);
-		$this->load->view('home/sidebar');
-		$this->load->view('home/topbar');
-		$this->load->view('menu/index', $data);
-		$this->load->view('home/footer-content');
-		$this->load->view('superadmin/structure/footer');
-	}
-
 	public function index(){
 		$data['title'] 	= 'Rosalina | Role Management';
 		$data['menu']	= $this->db->get("tbl_user_menu");

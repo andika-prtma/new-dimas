@@ -93,7 +93,7 @@ class M_document extends CI_Model{
 		return $this->db->get();
 	}
 
-	public function cekStatus($id_rev){
+	public function cekStatusApprove($id_rev){
 		$rev = $this->db->get_where('tbl_document_revisi', ['ID' => $id_rev])->row();
 		$app = $this->db->get_where('tbl_approval', ['id_revisi' => $id_rev])->num_rows();
 		
