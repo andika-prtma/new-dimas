@@ -22,21 +22,6 @@ class Login extends CI_Controller {
 		}
 	}
 
-	private function _cekdata(){
-		$email 		= $this->input->post('email');
-		$password 	= $this->input->post('password');
-
-		$post = [
-			'username' 	=> $email,
-			'password' 	=> $password,
-			'auth' 		=> $this->db->auth,
-		];
-
-		$login = cek_login($post);
-
-		var_dump($login->data);
-	}
-
 	private function _login(){
 		$email 		= $this->input->post('email');
 		$password 	= $this->input->post('password');
@@ -104,49 +89,7 @@ class Login extends CI_Controller {
 		}	
 	}
 
-
-	//fungsi sementara
-	private function prc_login(){
-		$email 		= $this->input->post('email');
-		$password 	= $this->input->post('password');
-
-		$cek = $this->db->get_where('tbl_user_login', ['email' => $email]);
-			if ($cek->num_rows() > 0) {
-				$user = [
-					'id_user' 	=> $cek->row()->ID,
-					'id_role' 	=> $cek->row()->id_role,
-					'name'		=> $cek->row()->first_name.' '.$cek->row()->last_name,
-					'email'		=> $cek->row()->email,
-				];
-				$this->session->set_userdata($user);
-				$this->m_login->updateLastLogin($cek->row()->ID);
-			} else {
-				$insert = [
-					'email' => $email,
-					'first_name' => 'admin',
-					'last_name' => 'admin',
-					'id_role'	=> 2,
-					'last_login' => time(),
-					'created_at' => time()
-				];
-
-				$this->db->insert('tbl_user_login', $insert);
-				$user = $this->db->get_where('tbl_user_login', ['ID' => $this->db->insert_id()])->row();
-
-				$ses = [
-					'id_user' => $user->ID,
-					'id_role' => $user->id_role,
-					'name'	=> $user->first_name.' '.$user->last_name,
-					'email'	=> $user->email,
-				];
-
-				$this->session->set_userdata($ses);
-			}
-			redirect('home');
-	}
-
 	public function logout(){
-		// $this->session->sess_destroy();
 		$this->session->unset_userdata(['id_user', 'name', 'email', 'site']);
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logout!</div>');
 		redirect('login');
