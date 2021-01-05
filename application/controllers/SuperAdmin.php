@@ -4,6 +4,7 @@ class SuperAdmin extends CI_Controller {
 	
 	public function __construct(){
 		parent::__construct();
+		cekSession();
 	}
 
 	public function index(){

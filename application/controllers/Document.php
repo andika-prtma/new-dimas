@@ -194,7 +194,7 @@ class Document extends CI_Controller {
 		$data['approval']	= $this->m_document->getApproval($id_revisi);
 		$data['log']		= $this->m_approve->getLogApproval($id_revisi);
 		$data['revisiData'] = $this->m_document->getWhere('tbl_document_revisi', ['ID' => $id_revisi])->row();
-		$data['status']		= $this->m_document->cekStatus($id_revisi);
+		$data['status']		= $this->m_document->cekStatusApprove($id_revisi);
 		$data['id_doc']		= $id;
 		$data['id_revisi']	= $id_revisi;
 

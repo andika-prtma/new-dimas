@@ -16,6 +16,7 @@ class Home extends CI_Controller {
 
 		$data['title']	 	= 'DIMAS';
 		$data['document']	= $this->m_home->needApproval($this->session->userdata('id_user'));
+		$data['document1']	= $this->m_home->jajal();
 		$data['all']		= $this->m_home->countAll('tbl_document');
 		$data['users']		= $this->m_home->countAll('tbl_user_login');
 		$data['shared']		= $this->m_home->countShared($this->id_user);

@@ -66,22 +66,31 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Nomor Document</th>
                     <th>Title</th>
                     <th>Revisi</th>
-                    <th>Creator</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($document->result() as $doc): ?>
-                      <tr>
+                    <?php $this->load->model('m_home') ?>
+                    <?php foreach ($document1->result() as $doc): ?>
+                    <?php $res = $this->m_home->eksekusi($doc->level, $doc->id_revisi, $this->session->userdata('id_user'))->row() ?>
+                      <?php if ($res != null): ?>
+                        <tr>
+                          <td><?= $res->title  ?></td>
+                          <td><?= $res->revisi ?></td>
+                          <td><a href="<?= base_url('approve/detail/').$res->id_doc.'/'.$res->ID ?>" class="btn btn-success">Detail</a></td>
+                        </tr>
+
+                        <hr>
+                      <?php endif ?>
+                      <!-- <tr>
                         <td><?= $doc->number_document ?></td>
                         <td><?= $doc->title ?></td>
                         <td><?= $doc->revisi ?></td>
                         <td><?= $doc->first_name ?></td>
                         <td><a href="<?= base_url('approve/detail/').$doc->id_doc.'/'.$doc->id_revisi ?>" class="btn btn-success">Detail</a></td>
-                      </tr>
+                      </tr> -->
                     <?php endforeach ?>
                   </tbody>
                 </table>

@@ -41,4 +41,28 @@ class M_home extends CI_Model{
 
 		return $personal + $dept + $external;
 	}
+
+	public function jajal(){
+		$this->db->select('rev.level_approve as level, rev.ID as id_revisi')
+				->from('tbl_document_revisi as rev')
+				->join('tbl_approval as app', 'app.id_revisi = rev.ID', 'left')
+				->where('rev.approved', 0)
+				->where('rev.submit', 1)
+				->order_by('rev.ID', 'DESC')
+				->group_by('rev.ID');
+		return $this->db->get();
+	}
+
+	public function eksekusi($level, $id_revisi, $user){
+		$this->db->select('rev.*, app.ID as approve_id, doc.number_document, usr.first_name, doc.ID as id_doc')
+				->from('tbl_approval as app')
+				->join('tbl_document_revisi as rev', 'app.id_revisi = rev.ID', 'left')
+				->join('tbl_document as doc', 'doc.ID = rev.id_doc', 'left')
+				->join('tbl_user_login as usr', 'doc.creator = usr.ID', 'left')
+				->where('app.level', $level)
+				->where('app.id_revisi', $id_revisi)
+				->where('app.id_pic', $user)
+				->group_by('rev.ID');
+		return $this->db->get();
+	}	
 }

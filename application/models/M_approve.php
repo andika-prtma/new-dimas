@@ -33,5 +33,21 @@ class M_approve extends CI_Model{
 		return $this->db->get();				
 	}
 
+	public function cekApproval($id_doc, $id_rev){
+		$this->db->select('MAX(level) as level');
+		$this->db->where('id_revisi', $id_rev);
+		$max = $this->db->get('tbl_approval')->row();
+
+		$level = $this->db->get_where('tbl_document_revisi', ['ID' => $id_rev])->row();
+
+		$max = intval($max->level)+1;
+		if ($max == $level->level_approve) {
+			$this->db->set('approved', 1)
+					->where('ID', $id_rev);
+			$this->db->update('tbl_document_revisi');
+		}
+	}
+
+
 
 }

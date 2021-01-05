@@ -5,6 +5,7 @@ class User extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		cekSession();
 	}
 
 	public function index(){
@@ -20,7 +21,7 @@ class User extends CI_Controller {
 	}
 
 	public function changeSite(){
-		$data['title'] = 'Rosalina | Change Site';
+		$data['title'] = 'Dimas | Change Site';
 
 		$user = [
 			'email' => $this->session->userdata("email"),

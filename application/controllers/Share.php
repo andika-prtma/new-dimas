@@ -9,6 +9,7 @@ class Share extends CI_Controller {
 		$this->load->model("m_approve");
 		$this->load->model("m_share");
 		$this->id_user = idUser();
+		cekSession();
 	}
 
 	public function index(){

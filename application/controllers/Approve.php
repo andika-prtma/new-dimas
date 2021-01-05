@@ -47,7 +47,7 @@ class Approve extends CI_Controller {
 			'id_pic'		=> $person,
 			'name_level' 	=> $name_level,
 			'level'			=> intval($level)+1,
-			'status'		=> 0,
+			'status'		=> 1,
 			'created_at'	=> time()
 
 		];
@@ -96,6 +96,8 @@ class Approve extends CI_Controller {
 		];
 		$this->m_approve->updateApproveLog($datalog);
 		$update = $this->db->query("UPDATE tbl_document_revisi SET level_approve='$status' WHERE ID='$id_revisi' ");
+		//cek complete approval
+		$this->m_approve->cekApproval($id_doc, $id_revisi);
 		redirect('approve/detail/'.$id_doc.'/'.$id_revisi);
 	}
 

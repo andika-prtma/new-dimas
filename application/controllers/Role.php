@@ -5,10 +5,11 @@ class Role extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		cekSession();
 	}
 
 	public function index(){
-		$data['title'] 	= 'Rosalina | Role Management';
+		$data['title'] 	= 'Dimas | Role Management';
 		$data['role']	= $this->db->get("tbl_user_role");
 
 		$this->load->view('header/home-index', $data);
@@ -19,7 +20,7 @@ class Role extends CI_Controller {
 	}
 
 	public function detail($id){
-		$data['title'] 	= 'Rosalina | Role Detail';
+		$data['title'] 	= 'Dimas | Role Detail';
 		$data['menu']	= $this->db->get('tbl_user_menu');
 		$data['role']	= $this->db->get_where('tbl_user_role', ['ID' => $id])->row();
 		$data['access'] = $this->db->get_where("tbl_user_access_menu", ['id_role' => $id])->row();;
