@@ -309,7 +309,19 @@ class Document extends CI_Controller {
 
 		$this->m_document->prosesPublish($id_rev, $data);
 		redirect($_SERVER['HTTP_REFERER']);
+	}
 
+	public function listShared(){
+		$data['title'] 			= 'Document List shared';
+		$data['shrExternal'] 	= $this->m_document->getShareExternal();
+		$data['shrUser'] 		= $this->m_document->getShareUser();
+		$data['shrDept'] 		= $this->m_document->getShareDept();
+		
+		$this->load->view('header/document-list', $data);
+		$this->load->view('home/sidebar');
+		$this->load->view('document/doc-listShared', $data);
+		$this->load->view('home/main-footer');
+		$this->load->view('footer/document-list', $data);
 	}
 
 }

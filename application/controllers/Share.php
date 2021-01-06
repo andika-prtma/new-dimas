@@ -23,7 +23,7 @@ class Share extends CI_Controller {
 		$this->load->view('footer/home-index', $data);
 	}
 
-	public function sharePage($id_rev, $id_doc){
+	public function sharePage($id_doc, $id_rev){
 		$data['title'] 		= 'Share Document';
 		$data['document']	= $this->m_share->detail_doc($id_rev, $id_doc)->row();
 		$data['users']		= $this->db->get('tbl_user_login')->result();
@@ -101,5 +101,18 @@ class Share extends CI_Controller {
 		$this->load->view('share/list-share');
 		$this->load->view('home/main-footer');
 		$this->load->view('footer/share-page', $data);	
+	}
+
+	public function viewExternalDoc($id_doc, $id_rev){
+		$data['title'] 	 	= 'DIMAS | Detail';
+		$data['document']	= $this->m_share->view_detail_doc($id_rev, $id_doc)->row();
+		$data['users']		= $this->db->get('tbl_user_login')->result();
+		$data['department'] = getDepartment()->data;
+		
+		$this->load->view('header/share-page', $data);
+		$this->load->view('home/sidebar');
+		$this->load->view('share/view-share');
+		$this->load->view('home/main-footer');
+		$this->load->view('footer/share-page', $data);
 	}
 }

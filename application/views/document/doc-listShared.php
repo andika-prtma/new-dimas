@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">List Document</h1>
+            <h1 class="m-0 text-dark">Your Share</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -52,7 +52,6 @@
           <div class="col-md-9">
             <div class="card card-info">
               <div class="card-header">
-                <a class="btn btn-success" href="<?= base_url('document/addDocument/').$id_dept ?>">Create Document</a>
               </div>
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -61,21 +60,41 @@
                     <th>Nomor Document</th>
                     <th>Title</th>
                     <th>Revisi</th>
-                    <th>Creator</th>
+                    <th>Type Share</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($documentList->result() as $ls): ?>
+                    <?php foreach ($shrExternal->result() as $ls): ?>
                       <tr>
                         <td><?= $ls->number_document ?></td>
                         <td><?= $ls->title ?></td>
                         <td><?= $ls->revisi ?></td>
-                        <td><?= $ls->first_name.' '.$ls->last_name ?></td>
+                        <td>External</td>
                         <td align="center">
-                          <a href="<?= base_url('document/documentView/').$ls->ID.'/'.$ls->id_revisi ?>"><i class="fas fa-desktop"></i></a>&nbsp; 
-                          <a href="<?= base_url('share/sharePage/').$ls->ID.'/'.$ls->id_revisi ?>"><i class="fas fa-share-alt"></i></a>&nbsp; 
-                          <a href=""><i class="fas fa-trash red"></i></a>
+                        	<a class="btn btn-success" href="<?= base_url('share/viewExternalDoc/'.$ls->id_doc.'/'.$ls->ID) ?>">Detail</a>
+                        </td>
+                      </tr>
+                    <?php endforeach ?>
+                    <?php foreach ($shrUser->result() as $ls): ?>
+                      <tr>
+                        <td><?= $ls->number_document ?></td>
+                        <td><?= $ls->title ?></td>
+                        <td><?= $ls->revisi ?></td>
+                        <td>User</td>
+                        <td align="center">
+                        	<a class="btn btn-success" href="<?= base_url() ?>">Detail</a>
+                        </td>
+                      </tr>
+                    <?php endforeach ?>
+                    <?php foreach ($shrDept->result() as $ls): ?>
+                      <tr>
+                        <td><?= $ls->number_document ?></td>
+                        <td><?= $ls->title ?></td>
+                        <td><?= $ls->revisi ?></td>
+                        <td>Dept</td>
+                        <td align="center">
+                        	<a class="btn btn-success" href="<?= base_url() ?>">Detail</a>
                         </td>
                       </tr>
                     <?php endforeach ?>

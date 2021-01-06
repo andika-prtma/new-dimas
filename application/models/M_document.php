@@ -109,4 +109,29 @@ class M_document extends CI_Model{
 		$this->db->where('ID', $id);
 		$this->db->update('tbl_document_revisi');
 	}
+
+	public function getShareUser(){
+		$this->db->select('doc.number_document, rev.*')
+				->from('tbl_share_user as shr')
+				->join('tbl_document_revisi as rev', 'shr.id_rev = rev.ID', 'left')
+				->join('tbl_document as doc', 'rev.id_doc = doc.ID', 'left')
+				->where('shr.id_user', $this->session->userdata('id_user'));
+		return $this->db->get();
+	}
+	public function getShareDept(){
+		$this->db->select('doc.number_document, rev.*')
+				->from('tbl_share_dept as shr')
+				->join('tbl_document_revisi as rev', 'shr.id_rev = rev.ID', 'left')
+				->join('tbl_document as doc', 'rev.id_doc = doc.ID', 'left')
+				->where('shr.id_user', $this->session->userdata('id_user'));
+		return $this->db->get();
+	}
+	public function getShareExternal(){
+		$this->db->select('doc.number_document, rev.*')
+				->from('tbl_share_external as shr')
+				->join('tbl_document_revisi as rev', 'shr.id_rev = rev.ID', 'left')
+				->join('tbl_document as doc', 'rev.id_doc = doc.ID', 'left')
+				->where('shr.id_user', $this->session->userdata('id_user'));
+		return $this->db->get();
+	}
 }
